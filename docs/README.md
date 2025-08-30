@@ -1,140 +1,101 @@
 # Cyber-Core
 
-Este proyecto representa el trabajo en conjunto de tres jóvenes que comparten la pasión por la robótica. Con Python y Arduino, desarrollamos un robot autónomo para la competencia de la 
-WRO Futuros Ingenieros. Aquí guardamos no solo nuestro código, sino también la experiencia, los aprendizajes y los retos que vivimos como equipo. Cada línea de programación, cada cable 
-conectado y cada pieza ajustada representa horas de esfuerzo y dedicación, pero también momentos de alegría, descubrimiento y crecimiento personal.
+This project represents the collaborative work of three young students who share a passion for robotics. With Python and Arduino, we developed an autonomous robot for the WRO Future Engineers competition. Here we store not only our code but also the experiences, lessons, and challenges we faced as a team. Every line of code, every wire connected, and every part assembled represents hours of effort and dedication, but also moments of joy, discovery, and personal growth.
 
-Integrantes:
--
+Team Members:
+
 * Eleazar Abisaí Pacheco Oliva 
 * Stefany Andrea Tobar de Paz 
 * Sergio Andrés Carrera Canel
 
-Misión:
+Mission
 -
-Nuestra misión es demostrar que la tecnología no es solo algo complicado que usan las grandes empresas, sino una herramienta que nosotros, como estudiantes, también podemos crear y 
-aprovechar para resolver problemas reales. Queremos que nuestro proyecto muestre que con creatividad, dedicación y trabajo en equipo es posible transformar ideas en algo útil y 
-funcional.
+Our mission is to demonstrate that technology is not just something complex used by large companies, but a tool that we, as students, can also create and leverage to solve real problems. We want our project to show that with creativity, dedication, and teamwork, it is possible to transform ideas into something useful and functional.
 
-No buscamos únicamente construir un robot, sino aprender en el proceso, inspirar a otros jóvenes a interesarse por la ciencia y la ingeniería, y demostrar que la innovación está al 
-alcance de todos si se combina disciplina con pasión.
+We are not only aiming to build a robot, but to learn throughout the process, inspire other young people to take interest in science and engineering, and prove that innovation is within everyone’s reach when discipline is combined with passion.
 
-Visión:
+Vision
 -
-Nuestra visión es llegar a un punto donde proyectos como el nuestro no se queden únicamente en una maqueta escolar, sino que puedan evolucionar hasta convertirse en soluciones que 
-impacten positivamente en la vida diaria de las personas. Nos imaginamos un futuro donde los jóvenes tengamos más espacios para experimentar y compartir nuestras ideas, sin miedo a 
-equivocarnos, porque de los errores también nacen avances importantes.
+Our vision is to reach a point where projects like ours do not remain just as a school prototype, but can evolve into solutions that positively impact people’s daily lives. We imagine a future where young people have more spaces to experiment and share ideas without the fear of making mistakes, because progress often comes from errors.
 
-Queremos que lo que hoy empieza como un reto académico, en el futuro inspire a más generaciones a atreverse a pensar distinto y a usar la tecnología como una aliada para construir un 
-mundo más eficiente, justo y sostenible.
+We want what today begins as an academic challenge to inspire future generations to dare to think differently and to use technology as an ally to build a more efficient, fair, and sustainable world.
 
-Componentes del Proyecto
-
-En el desarrollo de nuestro proyecto de robótica, fue fundamental contar con un conjunto de herramientas y dispositivos que permitieran llevar a cabo el diseño, la construcción y el 
-funcionamiento del robot autónomo. Cada elemento utilizado cumple un papel específico dentro del sistema, aportando desde la parte estructural hasta la lógica de control y la 
-interacción con el entorno.
-
-Lista de componentes actuales:
+Project Components
 -
-* Raspberry Pi 5 → cerebro principal del robot, encargado de procesar datos en tiempo real, coordinar sensores y ejecutar algoritmos de navegación autónoma.
+In the development of our robotics project, it was essential to have a set of tools and devices that allowed us to design, build, and operate the autonomous robot. Each element plays a specific role in the system, contributing from the structural part to the control logic and interaction with the environment.
 
-* Arduino UNO con Shield Elegoo → intermediario entre la Raspberry y los motores/servos, permite controlar la velocidad y dirección de manera precisa.
-
-* Motor DC de 12V → provee la tracción necesaria para las llantas traseras, permitiendo que el robot avance, retroceda y ajuste velocidad según el terreno y obstáculos.
-
-* Servomotor → controla la dirección del eje delantero, esencial para realizar giros precisos y mantener la trayectoria.
-
-* Cámara (ELEGOO ESP32-S3 CAM V1.0 o webcam) → permite detectar obstáculos y diferenciar colores, fundamental para la navegación autónoma.
-
-* Batería ELEGOO 7.4V → fuente principal de energía para todos los componentes, optimizada para ofrecer duración suficiente durante pruebas y competencias.
-
-* 3 sensores ultrasónicos → detectan obstáculos en el frente y los laterales, contribuyendo a la toma de decisiones en tiempo real.
-
-* Chasis del carrito → estructura física que soporta todos los componentes, adaptada mediante piezas impresas en 3D para asegurar estabilidad y distribución de peso.
-
-* Piezas impresas en 3D → sirven para fijar la electrónica y la batería al chasis, además de facilitar el ensamblaje y la protección de componentes sensibles.
-
-* Cada componente fue seleccionado con cuidado, evaluando su compatibilidad, eficiencia y facilidad de integración. La elección de una Raspberry Pi 5 se debió a su capacidad de
-procesamiento superior, permitiendo ejecutar algoritmos más complejos de visión por computadora. Los sensores ultrasónicos fueron calibrados para detectar obstáculos a diferentes
-distancias, mientras que el servomotor y el motor DC garantizaron un movimiento fluido y seguro.
-
-Bitácora del Proyecto:
+Current components list:
 -
-08 de Enero del 2025
+* Raspberry Pi 5 → main brain of the robot, responsible for real-time data processing, coordinating sensors, and executing autonomous navigation algorithms.
 
-Comenzamos desarmando un carrito de control remoto para aprovechar el chasis de la parte trasera. Definimos los componentes que necesitaríamos y comenzamos la programación base para el 
-control del vehículo, estableciendo la estructura del código en Python para la Raspberry Pi.
+* Arduino UNO with Elegoo Shield → intermediary between the Raspberry Pi and motors/servos, allowing precise speed and direction control.
 
-22 de Enero del 2025
+* 12V DC Motor → provides traction for the rear wheels, enabling the robot to move forward, backward, and adjust speed depending on terrain and obstacles.
 
-Realizamos avances en la programación, implementando las primeras funciones para el movimiento del motor y la gestión de energía. Definimos el modelo de control remoto que se integrará 
-y comenzamos pruebas iniciales de comunicación entre la Raspberry y el Arduino.
+* Servo motor → controls the steering of the front axle, essential for precise turns and maintaining trajectory.
 
-10 de Marzo del 2025
+* Camera (ELEGOO ESP32-S3 CAM V1.0 or webcam) → enables obstacle detection and color differentiation, essential for autonomous navigation.
 
-Imprimimos en 3D las piezas principales: la base superior e inferior que sostendrán la batería y las placas electrónicas. Ensamblamos estas piezas para asegurarnos de que encajaran 
-correctamente en el chasis, confirmando la compatibilidad física del diseño.
+* ELEGOO 7.4V Battery → main power source for all components, optimized for sufficient duration during tests and competitions.
 
-15 de Abril del 2025
+* 3 ultrasonic sensors → detect obstacles in front and on the sides, contributing to real-time decision-making.
 
-Verificamos la estabilidad del chasis y ajustamos el diseño de las piezas impresas para mejorar la distribución del peso. Continuamos avanzando en la lógica de control y planificamos la 
-integración de la cámara para la detección de obstáculos.
+* Car chassis → physical structure that supports all components, adapted with 3D printed parts to ensure stability and weight distribution.
 
-28 de Mayo del 2025
+* 3D printed parts → used to secure electronics and the battery to the chassis, as well as to facilitate assembly and protect sensitive components.
 
-Pedimos el tren delantero y la placa Raspberry en la tienda electrónica. Investigamos los controladores necesarios para motores y sistema de visión, evaluando distintas librerías y 
-algoritmos para procesamiento de imágenes.
+Each component was carefully chosen, considering compatibility, efficiency, and ease of integration. The Raspberry Pi 5 was selected for its superior processing power, enabling the execution of more complex computer vision algorithms. Ultrasonic sensors were calibrated to detect obstacles at different distances, while the servo and DC motor ensured smooth and safe movement.
 
-20 de Junio del 2025
-
-Recibimos el tren delantero y comenzamos a implementarlo en el chasis. Ajustamos las piezas impresas para asegurar un buen acople y verificamos la alineación de las ruedas delanteras 
-con los sensores de proximidad.
-
-10 de Julio del 2025
-
-Recibimos la Raspberry Pi e iniciamos la configuración del sistema operativo, instalación de librerías necesarias y pruebas de comunicación con Arduino. Implementamos la cámara para 
-detección de obstáculos y comenzamos a probar algoritmos de filtrado de color para identificar objetos rojos y verdes.
-
-25 de Julio del 2025
-
-Finalizamos la integración física de todos los componentes: chasis, tren delantero, placa, batería, cámara y sensores ultrasónicos. Realizamos pruebas básicas de encendido y 
-verificación de alimentación. Fue un momento muy gratificante porque finalmente vimos nuestro robot completo.
-
-11 - 25 de Agosto del 2025
-
-Iniciamos pruebas de funcionamiento del prototipo, evaluando control manual y autonomía básica. Ajustamos parámetros en el código para mejorar la estabilidad y precisión de movimientos. 
-Detectamos interferencias en las señales de los ultrasonidos y calibramos sus lecturas.
-
-26 de Agosto del 2025
-
-Realizamos pruebas de detección de obstáculos en distintos escenarios y condiciones de luz. Optimización del código para reducir la latencia entre la captura de imagen por la cámara y 
-la ejecución de movimientos por motores y servos.
-
-27 de Agosto del 2025
-
-Probamos la detección del cubo rojo, ajustando filtros HSV y rangos de color. Logramos que el robot diferenciara correctamente entre rojo y naranja, evitando errores en la navegación.
-
-28 de Agosto del 2025
-
-Iniciamos pruebas para detección de obstáculos verdes. Se implementaron ajustes en el balance de blancos y filtros de suavizado de imagen, mejorando la confiabilidad del sistema de 
-visión.
-
-Retos, Aprendizajes y Crecimiento:
+Project Log
 -
-Uno de los retos más significativos fue integrar todos los componentes en un mismo sistema funcional. No solo debíamos preocuparnos por la programación, sino también por la 
-compatibilidad de hardware, alimentación y distribución de peso. Cada fallo fue una oportunidad de aprendizaje: calibrar sensores, corregir errores de código y mejorar el diseño físico.
+January 8, 2025
+We began by disassembling a remote-control car to reuse the rear chassis. We defined the components we would need and started the base programming for vehicle control, setting up the code structure in Python for the Raspberry Pi.
 
-El trabajo en equipo fue esencial. Hubo momentos de frustración cuando nada funcionaba, pero la comunicación constante y la división de tareas nos permitió superar esos obstáculos. 
-Aprendimos que cada integrante aporta algo único: ideas, creatividad, paciencia y resolución de problemas.
+January 22, 2025
+Progressed with programming, implementing the first motor movement and energy management functions. Defined the remote-control model to be integrated and started initial communication tests between the Raspberry Pi and Arduino.
 
-Más allá de lo técnico, el proyecto nos enseñó valores importantes: perseverancia, organización, paciencia y la importancia de la documentación. Cada prueba, cada ajuste y cada línea de 
-código reflejan nuestro esfuerzo y crecimiento como estudiantes y como equipo.
+March 10, 2025
+3D printed the main parts: the upper and lower bases to hold the battery and electronic boards. Assembled them to ensure proper fit on the chassis, confirming physical compatibility.
 
-Impacto y Proyecciones Futuras:
+April 15, 2025
+Verified chassis stability and adjusted printed part designs to improve weight distribution. Continued advancing in control logic and planned camera integration for obstacle detection.
+
+May 28, 2025
+Ordered the front axle and the Raspberry Pi board from the electronics store. Researched motor controllers and vision system requirements, evaluating libraries and algorithms for image processing.
+
+June 20, 2025
+Received the front axle and began integrating it into the chassis. Adjusted printed parts for proper fitting and verified wheel alignment with proximity sensors.
+
+July 10, 2025
+Received the Raspberry Pi and started OS setup, library installation, and communication tests with Arduino. Integrated the camera for obstacle detection and began testing color filtering algorithms to identify red and green objects.
+
+July 25, 2025
+Completed physical integration of all components: chassis, front axle, board, battery, camera, and ultrasonic sensors. Ran basic power-on and supply verification tests. It was very rewarding to finally see the robot assembled.
+
+August 11–25, 2025
+Started prototype functionality tests, evaluating manual control and basic autonomy. Adjusted code parameters to improve movement stability and accuracy. Detected ultrasonic signal interference and calibrated sensor readings.
+
+August 26, 2025
+Conducted obstacle detection tests in different scenarios and lighting conditions. Optimized code to reduce latency between camera image capture and motor/servo movement execution.
+
+August 27, 2025
+Tested red cube detection, adjusting HSV filters and color ranges. The robot successfully distinguished between red and orange, avoiding navigation errors.
+
+August 28, 2025
+Began testing green obstacle detection. Implemented adjustments in white balance and image smoothing filters, improving vision system reliability.
+
+Challenges, Learning, and Growth
 -
-Aunque nuestro robot es hoy un prototipo, lo vemos como la base para futuros proyectos más complejos. Imaginamos sistemas autónomos capaces de colaborar en logística, seguridad o 
-asistencia en emergencias. Queremos que este proyecto inspire a otros jóvenes a explorar la robótica, mostrando que con esfuerzo y creatividad es posible transformar ideas en soluciones 
-reales.
+ 
+One of the biggest challenges was integrating all the components into a single functional system. We had to handle not only programming but also hardware compatibility, power supply, and weight distribution. Every failure became a learning opportunity: sensor calibration, code debugging, and physical design improvements.
 
-Cyber-Core no solo será recordado como un robot de competencia, sino como un ejemplo de innovación, perseverancia y trabajo en equipo, demostrando que la tecnología está al alcance de 
-quienes se atreven a aprender y crear.
+Teamwork was essential. There were frustrating moments when nothing worked, but constant communication and task division allowed us to overcome obstacles. We learned that every member brings something unique: ideas, creativity, patience, and problem-solving.
+
+Beyond the technical aspects, the project taught us important values: perseverance, organization, patience, and the importance of documentation. Every test, every adjustment, and every line of code reflects our effort and growth as students and as a team.
+
+Impact and Future Projections
+-
+
+Although our robot is currently a prototype, we see it as the foundation for future, more complex projects. We envision autonomous systems capable of contributing in logistics, safety, or emergency assistance. We want this project to inspire other young people to explore robotics, showing that with effort and creativity, ideas can be transformed into real solutions.
+
+Cyber-Core will not only be remembered as a competition robot, but as an example of innovation, perseverance, and teamwork, proving that technology is within the reach of those who dare to learn and create
