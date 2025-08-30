@@ -1,1 +1,113 @@
+#include <Servo.h>
+#include "DeviceDriverSet.h"
 
+Servo steeringServo;
+DeviceDriverSet_Motor motor;
+
+const int SERVO_PIN = 10;
+const int BUTTON_PIN = 2;
+const int SERVO_CENTER = 111;
+const int SERVO_MIN = 70;
+const int SERVO_MAX = 170;
+
+// Pines de ultrasonido
+const int US_RIGHT_TRIG = 13;
+const int US_RIGHT_ECHO = 12;
+const int US_LEFT_TRIG = A0;
+const int US_LEFT_ECHO = A1;
+// NUEVO: Pines para el ultrasÃ³nico frontal
+const int US_FRONT_TRIG = A2;
+const int US_FRONT_ECHO = A5;
+
+bool motorActivo = false;
+bool botonPrevio = HIGH;
+
+void setup() {
+  Serial.begin(115200);
+  steeringServo.attach(SERVO_PIN);
+  steeringServo.write(SERVO_CENTER);
+  pinMode(BUTTON_PIN, INPUT_PULLUP);
+  motor.begin();
+
+  pinMode(US_RIGHT_TRIG, OUTPUT);
+  pinMode(US_RIGHT_ECHO, INPUT);
+  pinMode(US_LEFT_TRIG, OUTPUT);
+  pinMode(US_LEFT_ECHO, INPUT);
+  // NUEVO
+  pinMode(US_FRONT_TRIG, OUTPUT);
+  pinMode(US_FRONT_ECHO, INPUT);
+}
+
+void loop() {
+  // BotÃ³n para activar/desactivar motores
+  bool botonPresionado = (digitalRead(BUTTON_PIN) == LOW);
+  if (botonPrevio == HIGH && botonPresionado) {
+    motorActivo = !motorActivo;
+    if (!motorActivo) {
+      pararMotor();
+    }
+    delay(300);
+  }
+  botonPrevio = botonPresionado;
+
+  // Procesa comandos por serial (igual que antes)
+  if (Serial.available()) {
+    String cmd = Serial.readStringUntil('\n');
+    int steer = 0, vel = 0, line = 0;
+    if (sscanf(cmd.c_str(), "STEER:%d,VEL:%d,LINE:%d", &steer, &vel, &line) == 3) {
+      steer = constrain(steer, -100, 100);
+      int angle = map(steer, -100, 100, SERVO_MIN, SERVO_MAX);
+      angle = constrain(angle, SERVO_MIN, SERVO_MAX);
+      steeringServo.write(angle);
+
+      if (motorActivo) {
+        int velFinal = (line == 1) ? 150 : vel;
+        moverMotores(velFinal);
+      } else {
+        pararMotor();
+      }
+    }
+  }
+
+  // Medir y enviar distancias cada 50 ms
+  static unsigned long lastSend = 0;
+  if (millis() - lastSend > 50) {
+    long distDer = medirUltrasonico(US_RIGHT_TRIG, US_RIGHT_ECHO);
+    long distIzq = medirUltrasonico(US_LEFT_TRIG, US_LEFT_ECHO);
+    long distFront = medirUltrasonico(US_FRONT_TRIG, US_FRONT_ECHO); // NUEVO
+    Serial.print("US:");
+    Serial.print(distDer);
+    Serial.print(",");
+    Serial.print(distIzq);
+    Serial.print(",");
+    Serial.println(distFront); // NUEVO
+    lastSend = millis();
+  }
+}
+
+long medirUltrasonico(int trigPin, int echoPin) {
+  digitalWrite(trigPin, LOW);
+  delayMicroseconds(2);
+  digitalWrite(trigPin, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(trigPin, LOW);
+  long duracion = pulseIn(echoPin, HIGH, 20000);
+  long distancia = duracion * 0.034 / 2;
+  return distancia;
+}
+
+void moverMotores(int velocidadBase) {
+  motor.control(
+    DeviceDriverSet_Motor::FORWARD, velocidadBase,
+    DeviceDriverSet_Motor::FORWARD, velocidadBase,
+    true
+  );
+}
+
+void pararMotor() {
+  motor.control(
+    DeviceDriverSet_Motor::FORWARD, 0,
+    DeviceDriverSet_Motor::FORWARD, 0,
+    false
+  );
+}
